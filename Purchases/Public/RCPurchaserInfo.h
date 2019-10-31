@@ -36,8 +36,6 @@ NS_SWIFT_NAME(PurchaserInfo)
 /// Returns all the non-consumable purchases a user has made.
 @property (readonly) NSSet<NSString *> *nonConsumablePurchases;
 
-@property (readonly) NSDictionary *originalData;
-
 /**
  Returns the version number for the version of the application when the user bought the app.
  Use this for grandfathering users when migrating to subscriptions.
@@ -92,6 +90,26 @@ NS_SWIFT_NAME(PurchaserInfo)
  @return The purchase date for `entitlementId`, `nil` if product never purchased
  */
 - (NSDate * _Nullable)purchaseDateForEntitlement:(NSString *)entitlementId;
+
+@end
+
+NS_SWIFT_NAME(ConsumableInfo)
+@interface RCConsumableInfo : NSObject
+
+@property (readonly) NSString *identifier;
+
+@property (readonly) NSDate *purchaseDate;
+
+- (instancetype _Nullable)initWithData:(NSDictionary *)data dateFormatter:(NSDateFormatter *)dateFormatter;
+
+@end
+
+NS_SWIFT_NAME(ConsumableInfos)
+@interface RCConsumableInfos : NSObject
+
+@property (readonly) NSDictionary<NSString *, NSArray<RCConsumableInfo *> *> *all;
+
+- (instancetype)initWithData:(NSDictionary * _Nonnull)data dateFormatter:(NSDateFormatter *)dateFormatter;
 
 @end
 
