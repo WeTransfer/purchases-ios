@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class RCEntitlementInfos, RCTransaction;
+@class RCEntitlementInfos, RCTransaction, RCNonSubscriptionInfos;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +20,9 @@ NS_SWIFT_NAME(Purchases.PurchaserInfo)
 
 /// Entitlements attached to this purchaser info
 @property (nonatomic, readonly) RCEntitlementInfos *entitlements;
+
+/// Non-subscription purchases attached to this purchaser info
+@property (readonly) RCNonSubscriptionInfos *nonSubscriptions;
 
 /// All *subscription* product identifiers with expiration dates in the future.
 @property (nonatomic, readonly) NSSet<NSString *> *activeSubscriptions;

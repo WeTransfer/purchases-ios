@@ -11,6 +11,9 @@
 #import "RCEntitlementInfos.h"
 #import "RCEntitlementInfos+Protected.h"
 #import "RCEntitlementInfo.h"
+#import "RCNonSubscriptionInfos.h"
+#import "RCNonSubscriptionInfos+Protected.h"
+#import "RCNonSubscriptionInfo.h"
 @import PurchasesCoreSwift;
 
 @interface RCPurchaserInfo ()
@@ -25,6 +28,7 @@
 @property (nonatomic, nullable) NSDate *requestDate;
 @property (nonatomic) NSDate *firstSeen;
 @property (nonatomic) RCEntitlementInfos *entitlements;
+@property (nonatomic) RCNonSubscriptionInfos *nonSubscriptions;
 @property (nonatomic) NSString *originalAppUserId;
 @property (nonatomic, nullable) NSString *schemaVersion;
 @property (nonatomic, nullable) NSURL *managementURL;
@@ -104,7 +108,8 @@ static dispatch_once_t onceToken;
                                                                purchasesData:allPurchases
                                                                dateFormatter:dateFormatter
                                                                  requestDate:self.requestDate];
-
+    self.nonSubscriptions = [[RCNonSubscriptionInfos alloc] initWithData:nonSubscriptionsData
+                                                           dateFormatter:dateFormatter];
     self.expirationDatesByProduct = [self parseExpirationDate:subscriptions];
     self.purchaseDatesByProduct = [self parsePurchaseDate:allPurchases];
 }

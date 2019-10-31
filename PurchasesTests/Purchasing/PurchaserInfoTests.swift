@@ -37,6 +37,22 @@ class BasicPurchaserInfoTests: XCTestCase {
                         "purchase_date": "1990-08-30T02:40:36Z",
                         "store": "play_store"
                     ]
+                ],
+                "consumable": [
+                    [
+                        "id": "1",
+                        "is_sandbox": false,
+                        "original_purchase_date": "2019-10-28T22:39:53Z",
+                        "purchase_date": "2019-10-28T22:39:53Z",
+                        "store": "app_store"
+                    ],
+                    [
+                        "id": "2",
+                        "is_sandbox": false,
+                        "original_purchase_date": "2019-10-28T22:43:42Z",
+                        "purchase_date": "2019-10-28T22:43:42Z",
+                        "store": "app_store"
+                    ]
                 ]
             ],
             "subscriptions": [
@@ -101,8 +117,7 @@ class BasicPurchaserInfoTests: XCTestCase {
 
     func testAllPurchasedProductIdentifier() {
         let allPurchased = purchaserInfo!.allPurchasedProductIdentifiers
-
-        expect(allPurchased).to(equal(Set(["onemonth_freetrial", "threemonth_freetrial", "onetime_purchase"])))
+        expect(allPurchased).to(equal(Set(["onemonth_freetrial", "threemonth_freetrial", "onetime_purchase", "onetime_purchase", "consumable"])))
     }
 
     func testLatestExpirationDateHelper() {
@@ -115,9 +130,8 @@ class BasicPurchaserInfoTests: XCTestCase {
 
     func testParsesOtherPurchases() {
         let nonConsumables = purchaserInfo!.nonConsumablePurchases
-        expect(nonConsumables.count).to(equal(1))
-
-        expect(nonConsumables as NSSet).to(contain(["onetime_purchase"]))
+        expect(nonConsumables.count).to(equal(2))
+        expect(nonConsumables).to(equal(Set(["onetime_purchase", "consumable"])))
     }
 
     func testOriginalApplicationVersionNilIfNotPresent() {
@@ -231,6 +245,13 @@ class BasicPurchaserInfoTests: XCTestCase {
     func testLifetimeSubscriptionsEntitlementInfos() {
         let entitlements = purchaserInfo!.entitlements.active
         expect(entitlements.keys).to(contain("forever_pro"));
+    }
+
+    func testNonSubscriptionInfos() {
+        let nonSubscriptions = purchaserInfo!.nonSubscriptions.all
+        expect(nonSubscriptions.count).to(equal(2))
+        guard let consumables = nonSubscriptions["consumable"] else { return XCTFail() }
+        expect(consumables.count).to(equal(2))
     }
 
     func testExpirationLifetime() {
