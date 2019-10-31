@@ -36,6 +36,8 @@ NS_SWIFT_NAME(PurchaserInfo)
 /// Returns all the non-consumable purchases a user has made.
 @property (readonly) NSSet<NSString *> *nonConsumablePurchases;
 
+@property (readonly) NSDictionary *originalData;
+
 /**
  Returns the version number for the version of the application when the user bought the app.
  Use this for grandfathering users when migrating to subscriptions.
