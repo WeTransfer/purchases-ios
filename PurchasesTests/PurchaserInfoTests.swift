@@ -31,8 +31,27 @@ class BasicPurchaserInfoTests: XCTestCase {
             "non_subscriptions": [
                 "onetime_purchase": [
                     [
+                        "id": "0",
+                        "is_sandbox": false,
                         "original_purchase_date": "1990-08-30T02:40:36Z",
-                        "purchase_date": "1990-08-30T02:40:36Z"
+                        "purchase_date": "1990-08-30T02:40:36Z",
+                        "store": "app_store"
+                    ]
+                ],
+                "consumable": [
+                    [
+                        "id": "1",
+                        "is_sandbox": false,
+                        "original_purchase_date": "2019-10-28T22:39:53Z",
+                        "purchase_date": "2019-10-28T22:39:53Z",
+                        "store": "app_store"
+                    ],
+                    [
+                        "id": "2",
+                        "is_sandbox": false,
+                        "original_purchase_date": "2019-10-28T22:43:42Z",
+                        "purchase_date": "2019-10-28T22:43:42Z",
+                        "store": "app_store"
                     ]
                 ]
             ],
@@ -179,6 +198,13 @@ class BasicPurchaserInfoTests: XCTestCase {
     func testLifetimeSubscriptionsEntitlementInfos() {
         let entitlements = purchaserInfo!.entitlements.active
         expect(entitlements.keys).to(contain("forever_pro"));
+    }
+
+    func testNonSubscriptionInfos() {
+        let nonSubscriptions = purchaserInfo!.nonSubscriptions.all
+        expect(nonSubscriptions.count).to(equal(2))
+        guard let consumables = nonSubscriptions["consumable"] else { return XCTFail() }
+        expect(consumables.count).to(equal(2))
     }
 
     func testExpirationLifetime() {

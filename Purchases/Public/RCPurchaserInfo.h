@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class RCEntitlementInfos;
-@class RCConsumableInfos;
+@class RCNonSubscriptionInfos;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,6 +21,9 @@ NS_SWIFT_NAME(PurchaserInfo)
 
 /// Entitlements attached to this purchaser info
 @property (readonly) RCEntitlementInfos *entitlements;
+
+/// Non-subscription purchases attached to this purchaser info
+@property (readonly) RCNonSubscriptionInfos *nonSubscriptions;
 
 /// All active *entitlements*.
 @property (readonly) NSSet<NSString *> *activeEntitlements DEPRECATED_MSG_ATTRIBUTE("Use PurchaserInfo.entitlements.active instead.");
@@ -36,8 +39,6 @@ NS_SWIFT_NAME(PurchaserInfo)
 
 /// Returns all the non-consumable purchases a user has made.
 @property (readonly) NSSet<NSString *> *nonConsumablePurchases;
-
-@property (readonly) RCConsumableInfos *consumables;
 
 /**
  Returns the version number for the version of the application when the user bought the app.
@@ -93,26 +94,6 @@ NS_SWIFT_NAME(PurchaserInfo)
  @return The purchase date for `entitlementId`, `nil` if product never purchased
  */
 - (NSDate * _Nullable)purchaseDateForEntitlement:(NSString *)entitlementId;
-
-@end
-
-NS_SWIFT_NAME(ConsumableInfo)
-@interface RCConsumableInfo : NSObject
-
-@property (readonly) NSString *identifier;
-
-@property (readonly) NSDate *purchaseDate;
-
-- (instancetype _Nullable)initWithData:(NSDictionary *)data dateFormatter:(NSDateFormatter *)dateFormatter;
-
-@end
-
-NS_SWIFT_NAME(ConsumableInfos)
-@interface RCConsumableInfos : NSObject
-
-@property (readonly) NSDictionary<NSString *, NSArray<RCConsumableInfo *> *> *all;
-
-- (instancetype)initWithData:(NSDictionary * _Nonnull)data dateFormatter:(NSDateFormatter *)dateFormatter;
 
 @end
 

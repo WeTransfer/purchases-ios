@@ -11,6 +11,9 @@
 #import "RCEntitlementInfos.h"
 #import "RCEntitlementInfos+Protected.h"
 #import "RCEntitlementInfo.h"
+#import "RCNonSubscriptionInfos.h"
+#import "RCNonSubscriptionInfos+Protected.h"
+#import "RCNonSubscriptionInfo.h"
 
 @interface RCPurchaserInfo ()
 
@@ -22,7 +25,7 @@
 @property (nonatomic) NSDate * _Nullable requestDate;
 @property (nonatomic) NSDate *firstSeen;
 @property (nonatomic) RCEntitlementInfos *entitlements;
-@property (nonatomic) RCConsumableInfos *consumables;
+@property (nonatomic) RCNonSubscriptionInfos *nonSubscriptions;
 @property (nonatomic) NSString *originalAppUserId;
 @property (nonatomic) NSString * _Nullable schemaVersion;
 
@@ -85,8 +88,7 @@ static dispatch_once_t onceToken;
         NSDictionary *entitlements = subscriberData[@"entitlements"];
         
         self.entitlements = [[RCEntitlementInfos alloc] initWithEntitlementsData:entitlements purchasesData:allPurchases dateFormatter:dateFormatter requestDate:self.requestDate];
-
-        self.consumables = [[RCConsumableInfos alloc] initWithData:nonSubscriptions dateFormatter:dateFormatter];
+        self.nonSubscriptions = [[RCNonSubscriptionInfos alloc] initWithData:nonSubscriptions dateFormatter:dateFormatter];
 
         self.originalAppUserId = subscriberData[@"original_app_user_id"];
     }
@@ -264,74 +266,6 @@ static dispatch_once_t onceToken;
     }
 
     return [NSString stringWithFormat:@"<PurchaserInfo\n originalApplicationVersion: %@,\n latestExpirationDate: %@\n activeEntitlements: %@,\n activeSubscriptions: %@,\n nonConsumablePurchases: %@,\n requestDate: %@\nfirstSeen: %@,\noriginalAppUserId: %@,\nentitlements: %@,\n>", self.originalApplicationVersion, self.latestExpirationDate, activeEntitlements, activeSubscriptions, self.nonConsumablePurchases, self.requestDate, self.firstSeen, self.originalAppUserId, entitlements];
-}
-
-@end
-
-@interface RCConsumableInfo ()
-@property (nonatomic) NSString *identifier;
-@property (nonatomic) NSDate *purchaseDate;
-@end
-
-@implementation RCConsumableInfo
-
-- (instancetype _Nullable)initWithData:(NSDictionary *)data dateFormatter:(NSDateFormatter *)dateFormatter
-{
-    if (self = [super init]) {
-        NSString *identifier = data[@"id"];
-        if (identifier == nil) {
-            return nil;
-        }
-        NSDate *purchaseDate = [self parseDate:data[@"purchase_date"] withDateFormatter:dateFormatter];
-        if (purchaseDate == nil) {
-            return nil;
-        }
-        self.identifier = identifier;
-        self.purchaseDate = purchaseDate;
-    }
-    return self;
-}
-
-- (NSDate * _Nullable)parseDate:(id)dateString withDateFormatter:(NSDateFormatter *)dateFormatter
-{
-    if ([dateString isKindOfClass:NSString.class]) {
-        return [dateFormatter dateFromString:(NSString *)dateString];
-    }
-    return nil;
-}
-
-@end
-
-@interface RCConsumableInfos ()
-@property (nonatomic) NSDictionary<NSString *, NSArray<RCConsumableInfo *> *> *all;
-@end
-
-@implementation RCConsumableInfos
-
-- (instancetype)initWithData:(NSDictionary *)data dateFormatter:(NSDateFormatter *)dateFormatter
-{
-    if (self = [super init]) {
-        NSMutableDictionary<NSString *, NSArray<RCConsumableInfo *> *> *all = [[NSMutableDictionary alloc] init];
-        for (NSString *productIdentifier in data) {
-            id consumablesData = data[productIdentifier];
-            if ([consumablesData isKindOfClass:NSArray.class]) {
-                NSMutableArray<RCConsumableInfo *> *consumables = [[NSMutableArray alloc] init];
-                for (id consumableData in consumablesData) {
-                    if ([consumableData isKindOfClass:NSDictionary.class]) {
-                        RCConsumableInfo *consumable = [[RCConsumableInfo alloc] initWithData:consumableData dateFormatter:dateFormatter];
-                        if (consumable != nil) {
-                            [consumables addObject:consumable];
-                        }
-                    }
-                }
-                if (consumables.count > 0) {
-                    all[productIdentifier] = consumables;
-                }
-            }
-        }
-        self.all = [NSDictionary dictionaryWithDictionary:all];
-    }
-    return self;
 }
 
 @end

@@ -65,6 +65,12 @@
 		35DFC68620B87646004584CC /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350FBDDC1F7EA3570065833D /* Nimble.framework */; };
 		35DFC68720B87646004584CC /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350FBDD71F7DF17F0065833D /* OHHTTPStubs.framework */; };
 		35E5B1DC1F80026C00B2537C /* StoreKitWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E5B1DB1F80026C00B2537C /* StoreKitWrapperTests.swift */; };
+		E63B7E9D236B29C50012F7D0 /* RCNonSubscriptionInfo+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7E9C236B29C50012F7D0 /* RCNonSubscriptionInfo+Protected.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		E63B7EA0236B2A7D0012F7D0 /* RCNonSubscriptionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B7E9E236B2A7D0012F7D0 /* RCNonSubscriptionInfo.m */; };
+		E63B7EA1236B2A7D0012F7D0 /* RCNonSubscriptionInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7E9F236B2A7D0012F7D0 /* RCNonSubscriptionInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E63B7EA3236B2A850012F7D0 /* RCNonSubscriptionInfos+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7EA2236B2A850012F7D0 /* RCNonSubscriptionInfos+Protected.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		E63B7EA5236B2ACD0012F7D0 /* RCNonSubscriptionInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = E63B7EA4236B2ACD0012F7D0 /* RCNonSubscriptionInfos.m */; };
+		E63B7EA6236B2D370012F7D0 /* RCNonSubscriptionInfos.h in Headers */ = {isa = PBXBuildFile; fileRef = E63B7E95236B28A00012F7D0 /* RCNonSubscriptionInfos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +160,12 @@
 		35D3AB412030B4C600DE42C5 /* RCIntroEligibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCIntroEligibility.h; sourceTree = "<group>"; };
 		35D3AB422030B4C600DE42C5 /* RCIntroEligibility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCIntroEligibility.m; sourceTree = "<group>"; };
 		35E5B1DB1F80026C00B2537C /* StoreKitWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitWrapperTests.swift; sourceTree = "<group>"; };
+		E63B7E95236B28A00012F7D0 /* RCNonSubscriptionInfos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCNonSubscriptionInfos.h; sourceTree = "<group>"; };
+		E63B7E9C236B29C50012F7D0 /* RCNonSubscriptionInfo+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RCNonSubscriptionInfo+Protected.h"; sourceTree = "<group>"; };
+		E63B7E9E236B2A7D0012F7D0 /* RCNonSubscriptionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCNonSubscriptionInfo.m; sourceTree = "<group>"; };
+		E63B7E9F236B2A7D0012F7D0 /* RCNonSubscriptionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCNonSubscriptionInfo.h; sourceTree = "<group>"; };
+		E63B7EA2236B2A850012F7D0 /* RCNonSubscriptionInfos+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RCNonSubscriptionInfos+Protected.h"; sourceTree = "<group>"; };
+		E63B7EA4236B2ACD0012F7D0 /* RCNonSubscriptionInfos.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCNonSubscriptionInfos.m; sourceTree = "<group>"; };
 		EF6FB839CFA4B4A3A3687D61 /* RCPromotionalOffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCPromotionalOffer.m; sourceTree = "<group>"; };
 		EF6FBD2FBB7BD43897C26768 /* RCPromotionalOffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCPromotionalOffer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,24 +203,28 @@
 		350FBDE61F7EEEDF0065833D /* Public */ = {
 			isa = PBXGroup;
 			children = (
-				353AB5E5222F633D003754E6 /* RCPurchasesErrorUtils.h */,
-				352E88422229B1A60046A10A /* RCPurchasesErrorUtils.m */,
-				353AB5E3222F624E003754E6 /* RCPurchasesErrors.h */,
 				35262A011F7C4B9100C04F2C /* Purchases.h */,
-				350FBDE71F7EEF070065833D /* RCPurchases.h */,
-				350FBDE81F7EEF070065833D /* RCPurchases.m */,
-				351F4FAD1F803D0700F245F4 /* RCPurchaserInfo.h */,
-				351F4FAE1F803D0700F245F4 /* RCPurchaserInfo.m */,
-				35D3AB412030B4C600DE42C5 /* RCIntroEligibility.h */,
-				35D3AB422030B4C600DE42C5 /* RCIntroEligibility.m */,
 				35CE74F220C389E000CE09D8 /* RCEntitlement.h */,
 				35CE74F320C389E000CE09D8 /* RCEntitlement.m */,
-				35CE74F920C38A7100CE09D8 /* RCOffering.h */,
-				35CE74FA20C38A7100CE09D8 /* RCOffering.m */,
-				35B54E4522EA6F11005918B1 /* RCEntitlementInfo.m */,
 				35B54E4722EA6F4E005918B1 /* RCEntitlementInfo.h */,
+				35B54E4522EA6F11005918B1 /* RCEntitlementInfo.m */,
 				35B54E4922EA6FBD005918B1 /* RCEntitlementInfos.h */,
 				35B54E4B22EA6FD3005918B1 /* RCEntitlementInfos.m */,
+				35D3AB412030B4C600DE42C5 /* RCIntroEligibility.h */,
+				35D3AB422030B4C600DE42C5 /* RCIntroEligibility.m */,
+				E63B7E9F236B2A7D0012F7D0 /* RCNonSubscriptionInfo.h */,
+				E63B7E9E236B2A7D0012F7D0 /* RCNonSubscriptionInfo.m */,
+				E63B7E95236B28A00012F7D0 /* RCNonSubscriptionInfos.h */,
+				E63B7EA4236B2ACD0012F7D0 /* RCNonSubscriptionInfos.m */,
+				35CE74F920C38A7100CE09D8 /* RCOffering.h */,
+				35CE74FA20C38A7100CE09D8 /* RCOffering.m */,
+				351F4FAD1F803D0700F245F4 /* RCPurchaserInfo.h */,
+				351F4FAE1F803D0700F245F4 /* RCPurchaserInfo.m */,
+				350FBDE71F7EEF070065833D /* RCPurchases.h */,
+				350FBDE81F7EEF070065833D /* RCPurchases.m */,
+				353AB5E3222F624E003754E6 /* RCPurchasesErrors.h */,
+				353AB5E5222F633D003754E6 /* RCPurchasesErrorUtils.h */,
+				352E88422229B1A60046A10A /* RCPurchasesErrorUtils.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -235,37 +251,39 @@
 		35262A001F7C4B9100C04F2C /* Purchases */ = {
 			isa = PBXGroup;
 			children = (
+				35262A021F7C4B9100C04F2C /* Info.plist */,
+				359A0E9F2003C8CD002D8C7F /* NSLocale+RCExtensions.h */,
+				359A0EA02003C8CD002D8C7F /* NSLocale+RCExtensions.m */,
 				350FBDE61F7EEEDF0065833D /* Public */,
-				35A60EA81F82993E00D2FAE8 /* RCPurchases+Protected.h */,
-				35395CB321B9EB1000286D13 /* RCIntroEligibility+Protected.h */,
-				352C36BE1F9D372D00A15783 /* RCPurchaserInfo+Protected.h */,
+				350A1B86226F937F00CCA10F /* RCAttributionData.h */,
+				350A1B88226F93C800CCA10F /* RCAttributionData.m */,
+				35846AF82267FDD600CC9E56 /* RCAttributionFetcher.h */,
+				35846AFA2267FE7F00CC9E56 /* RCAttributionFetcher.m */,
+				351F4FA91F80190700F245F4 /* RCBackend.h */,
+				351F4FAA1F80190700F245F4 /* RCBackend.m */,
+				35C98D9420B7306A006DCBB5 /* RCCrossPlatformSupport.h */,
 				35CE750320C396E400CE09D8 /* RCEntitlement+Protected.h */,
-				35CE750020C3932900CE09D8 /* RCOffering+Protected.h */,
+				35B54E4F22EF7F3A005918B1 /* RCEntitlementInfo+Protected.h */,
+				35B54E5122EF88CE005918B1 /* RCEntitlementInfos+Protected.h */,
 				35262A2A1F7D783F00C04F2C /* RCHTTPClient.h */,
 				35262A2B1F7D783F00C04F2C /* RCHTTPClient.m */,
-				350FBDE11F7EE9020065833D /* RCUtils.h */,
-				350FBDDF1F7EE8F20065833D /* RCUtils.m */,
+				35395CB321B9EB1000286D13 /* RCIntroEligibility+Protected.h */,
+				E63B7E9C236B29C50012F7D0 /* RCNonSubscriptionInfo+Protected.h */,
+				E63B7EA2236B2A850012F7D0 /* RCNonSubscriptionInfos+Protected.h */,
+				35CE750020C3932900CE09D8 /* RCOffering+Protected.h */,
+				EF6FBD2FBB7BD43897C26768 /* RCPromotionalOffer.h */,
+				EF6FB839CFA4B4A3A3687D61 /* RCPromotionalOffer.m */,
+				35846AFE226A554300CC9E56 /* RCPromotionalOffer+Protected.h */,
+				352C36BE1F9D372D00A15783 /* RCPurchaserInfo+Protected.h */,
+				35A60EA81F82993E00D2FAE8 /* RCPurchases+Protected.h */,
+				353AB5E82230A239003754E6 /* RCReceiptFetcher.h */,
+				353AB5F82230AAE2003754E6 /* RCReceiptFetcher.m */,
 				350FBDEB1F7EFB950065833D /* RCStoreKitRequestFetcher.h */,
 				350FBDEC1F7EFB950065833D /* RCStoreKitRequestFetcher.m */,
 				350FBDF11F7FFD340065833D /* RCStoreKitWrapper.h */,
 				350FBDF21F7FFD340065833D /* RCStoreKitWrapper.m */,
-				351F4FA91F80190700F245F4 /* RCBackend.h */,
-				351F4FAA1F80190700F245F4 /* RCBackend.m */,
-				359A0E9F2003C8CD002D8C7F /* NSLocale+RCExtensions.h */,
-				359A0EA02003C8CD002D8C7F /* NSLocale+RCExtensions.m */,
-				35C98D9420B7306A006DCBB5 /* RCCrossPlatformSupport.h */,
-				35262A021F7C4B9100C04F2C /* Info.plist */,
-				353AB5E82230A239003754E6 /* RCReceiptFetcher.h */,
-				353AB5F82230AAE2003754E6 /* RCReceiptFetcher.m */,
-				35846AF82267FDD600CC9E56 /* RCAttributionFetcher.h */,
-				35846AFA2267FE7F00CC9E56 /* RCAttributionFetcher.m */,
-				350A1B86226F937F00CCA10F /* RCAttributionData.h */,
-				350A1B88226F93C800CCA10F /* RCAttributionData.m */,
-				EF6FBD2FBB7BD43897C26768 /* RCPromotionalOffer.h */,
-				EF6FB839CFA4B4A3A3687D61 /* RCPromotionalOffer.m */,
-				35846AFE226A554300CC9E56 /* RCPromotionalOffer+Protected.h */,
-				35B54E4F22EF7F3A005918B1 /* RCEntitlementInfo+Protected.h */,
-				35B54E5122EF88CE005918B1 /* RCEntitlementInfos+Protected.h */,
+				350FBDE11F7EE9020065833D /* RCUtils.h */,
+				350FBDDF1F7EE8F20065833D /* RCUtils.m */,
 			);
 			path = Purchases;
 			sourceTree = "<group>";
@@ -273,16 +291,16 @@
 		35262A1F1F7D77E600C04F2C /* PurchasesTests */ = {
 			isa = PBXGroup;
 			children = (
+				351F4FB11F803D9C00F245F4 /* BackendTests.swift */,
+				35B54E4D22ED1FA9005918B1 /* EntitlementInfosTests.swift */,
+				350FBDD61F7DF1640065833D /* Frameworks */,
+				35262A2F1F7D78C600C04F2C /* HTTPClientTests.swift */,
+				35262A221F7D77E600C04F2C /* Info.plist */,
+				351703CC1F805E5D00EEE27A /* PurchaserInfoTests.swift */,
 				35262A291F7D783F00C04F2C /* PurchasesTests-Bridging-Header.h */,
 				35262A201F7D77E600C04F2C /* PurchasesTests.swift */,
-				35262A2F1F7D78C600C04F2C /* HTTPClientTests.swift */,
 				350FBDEF1F7EFC410065833D /* StoreKitRequestFetcherTests.swift */,
 				35E5B1DB1F80026C00B2537C /* StoreKitWrapperTests.swift */,
-				351F4FB11F803D9C00F245F4 /* BackendTests.swift */,
-				351703CC1F805E5D00EEE27A /* PurchaserInfoTests.swift */,
-				35B54E4D22ED1FA9005918B1 /* EntitlementInfosTests.swift */,
-				35262A221F7D77E600C04F2C /* Info.plist */,
-				350FBDD61F7DF1640065833D /* Frameworks */,
 			);
 			path = PurchasesTests;
 			sourceTree = "<group>";
@@ -311,18 +329,22 @@
 				35B54E4A22EA6FBD005918B1 /* RCEntitlementInfos.h in Headers */,
 				35846AF92267FDD600CC9E56 /* RCAttributionFetcher.h in Headers */,
 				350FBDED1F7EFB950065833D /* RCStoreKitRequestFetcher.h in Headers */,
+				E63B7EA1236B2A7D0012F7D0 /* RCNonSubscriptionInfo.h in Headers */,
 				35CE74F420C389E000CE09D8 /* RCEntitlement.h in Headers */,
 				35CE74FB20C38A7100CE09D8 /* RCOffering.h in Headers */,
 				35B54E4822EA6F4E005918B1 /* RCEntitlementInfo.h in Headers */,
+				E63B7E9D236B29C50012F7D0 /* RCNonSubscriptionInfo+Protected.h in Headers */,
 				353AB5E4222F624E003754E6 /* RCPurchasesErrors.h in Headers */,
 				35846AFF226A56AE00CC9E56 /* RCPromotionalOffer+Protected.h in Headers */,
 				353AB5E6222F633D003754E6 /* RCPurchasesErrorUtils.h in Headers */,
 				359A0EA12003C8CD002D8C7F /* NSLocale+RCExtensions.h in Headers */,
 				351F4FAB1F80190700F245F4 /* RCBackend.h in Headers */,
 				353AB5E92230A239003754E6 /* RCReceiptFetcher.h in Headers */,
+				E63B7EA6236B2D370012F7D0 /* RCNonSubscriptionInfos.h in Headers */,
 				352C36BF1F9D372D00A15783 /* RCPurchaserInfo+Protected.h in Headers */,
 				35395CB421B9F59E00286D13 /* RCIntroEligibility+Protected.h in Headers */,
 				350FBDE91F7EEF070065833D /* RCPurchases.h in Headers */,
+				E63B7EA3236B2A850012F7D0 /* RCNonSubscriptionInfos+Protected.h in Headers */,
 				35A60EAA1F82993E00D2FAE8 /* RCPurchases+Protected.h in Headers */,
 				351F4FAF1F803D0700F245F4 /* RCPurchaserInfo.h in Headers */,
 				35CE750120C3932900CE09D8 /* RCOffering+Protected.h in Headers */,
@@ -468,8 +490,10 @@
 				350A1B89226F93C800CCA10F /* RCAttributionData.m in Sources */,
 				352E88442229B1A70046A10A /* RCPurchasesErrorUtils.m in Sources */,
 				359A0EA22003C8CD002D8C7F /* NSLocale+RCExtensions.m in Sources */,
+				E63B7EA5236B2ACD0012F7D0 /* RCNonSubscriptionInfos.m in Sources */,
 				351F4FB01F803D0700F245F4 /* RCPurchaserInfo.m in Sources */,
 				35CE74F620C389E000CE09D8 /* RCEntitlement.m in Sources */,
+				E63B7EA0236B2A7D0012F7D0 /* RCNonSubscriptionInfo.m in Sources */,
 				350FBDEA1F7EEF070065833D /* RCPurchases.m in Sources */,
 				35262A2D1F7D783F00C04F2C /* RCHTTPClient.m in Sources */,
 				350FBDF41F7FFD350065833D /* RCStoreKitWrapper.m in Sources */,
